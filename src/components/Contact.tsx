@@ -103,10 +103,12 @@ export function Contact() {
             {PROFILE.email ? (
               <div className="contact__email-wrapper">
                 <a
-                  href={`mailto:${PROFILE.email}`}
+                  href={`https://mail.google.com/mail/?view=cm&to=${PROFILE.email}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="btn btn-primary contact__email-btn"
                   id="contact-email-btn"
-                  title={isId ? 'Kirim email langsung' : 'Send an email'}
+                  title={isId ? 'Buka Gmail untuk mengirim email' : 'Open Gmail to send an email'}
                 >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
