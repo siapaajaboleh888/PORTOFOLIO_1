@@ -1,4 +1,5 @@
 import { useLanguage } from '../context/LanguageContext';
+import { PROFILE } from '../data/siteData';
 import './Footer.css';
 
 export function Footer() {
@@ -36,7 +37,7 @@ export function Footer() {
             {t.footer.tagline}
           </p>
           <p className="footer__copy">
-            © {new Date().getFullYear()} Moh. Syaiful Anam. {t.footer.builtWith}
+            © {new Date().getFullYear()} {PROFILE.legalName}. {t.footer.builtWith}
           </p>
         </div>
 

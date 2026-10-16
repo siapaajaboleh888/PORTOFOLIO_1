@@ -76,7 +76,7 @@ function ProjectCard({ project, index, onClick }: { project: Project; index: num
       {/* Footer */}
       <div className="project-card__footer">
         <span className="project-card__cta">
-          View Details
+          {isId ? 'Lihat Detail' : 'View Details'}
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
             <path d="M7 17L17 7M17 7H7M17 7V17" />
           </svg>

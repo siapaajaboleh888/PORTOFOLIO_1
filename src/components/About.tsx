@@ -54,8 +54,7 @@ export function About() {
             <div className="about__skills">
               <h3 className="about__skills-title">{t.about.skillsTitle}</h3>
               <p className="about__skills-note">
-                Skills listed below are based on verified project usage or active learning.
-                No percentage ratings — those tend to be misleading.
+                {t.about.skillsNote}
               </p>
               <div className="about__skill-groups">
                 {SKILLS.map(group => (
@@ -81,11 +80,11 @@ function AboutAvatar() {
               <span className="about__terminal-dot red" />
               <span className="about__terminal-dot yellow" />
               <span className="about__terminal-dot green" />
-              <span className="about__terminal-title">syaiful.sh</span>
+              <span className="about__terminal-title">emha-anam.sh</span>
             </div>
             <div className="about__terminal-body">
               <p><span className="about__term-green">const</span> <span className="about__term-blue">dev</span> = {'{'}</p>
-              <p>&nbsp;&nbsp;name: <span className="about__term-cyan">"Syaiful"</span>,</p>
+              <p>&nbsp;&nbsp;name: <span className="about__term-cyan">"Emha Anam"</span>,</p>
               <p>&nbsp;&nbsp;role: <span className="about__term-cyan">"AI-Dev"</span>,</p>
               <p>&nbsp;&nbsp;location: <span className="about__term-cyan">"Madura 🇮🇩"</span>,</p>
               <p>&nbsp;&nbsp;open: <span className="about__term-violet">true</span>,</p>

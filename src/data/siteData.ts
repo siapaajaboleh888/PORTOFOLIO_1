@@ -3,8 +3,9 @@
 // ============================================================
 
 export const PROFILE = {
-  name: 'Moh. Syaiful Anam',
-  nameShort: 'Syaiful',
+  name: 'Emha Anam',
+  nameShort: 'Emha',
+  legalName: 'Moh. Syaiful Anam',
   headline: 'AI-Assisted Web Developer',
   subheadline: 'Information Systems & Software Testing',
   location: 'Madura, Indonesia',

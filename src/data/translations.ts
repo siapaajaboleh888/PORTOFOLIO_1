@@ -233,6 +233,7 @@ export const TRANSLATIONS = {
       approachLabel: 'Development Approach',
       approachVal: 'AI-Augmented Velocity + Rigorous QA',
       skillsTitle: 'Technical Capabilities',
+      skillsNote: 'Skills listed below are based on verified project usage or active learning. No percentage ratings — those tend to be misleading.',
     },
     contact: {
       label: 'Get In Touch',
@@ -485,6 +486,7 @@ export const TRANSLATIONS = {
       approachLabel: 'Pendekatan Kerja',
       approachVal: 'Akselerasi AI + Uji Kualitas Ketat',
       skillsTitle: 'Keahlian Teknis',
+      skillsNote: 'Keahlian di bawah ini didasarkan pada penggunaan nyata dalam proyek atau pembelajaran aktif. Tidak ada rating persentase — karena cenderung menyesatkan.',
     },
     contact: {
       label: 'Hubungi Saya',
