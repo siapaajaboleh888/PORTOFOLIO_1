@@ -1,12 +1,24 @@
+import { useLanguage } from '../context/LanguageContext';
 import './Footer.css';
 
 export function Footer() {
+  const { t } = useLanguage();
+
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const navMap: Record<string, string> = {
+    home: t.nav.home,
+    projects: t.nav.projects,
+    services: t.nav.services,
+    process: t.nav.process,
+    about: t.nav.about,
+    contact: t.nav.contact,
   };
 
   return (
@@ -21,23 +33,23 @@ export function Footer() {
             <span style={{ color: 'var(--accent-blue)' }}>/&gt;</span>
           </button>
           <p className="footer__tagline">
-            AI-Assisted Web Developer · Madura, Indonesia
+            {t.footer.tagline}
           </p>
           <p className="footer__copy">
-            © {new Date().getFullYear()} Moh. Syaiful Anam. Built with React + Vite.
+            © {new Date().getFullYear()} Moh. Syaiful Anam. {t.footer.builtWith}
           </p>
         </div>
 
         {/* Quick links */}
         <nav className="footer__nav" aria-label="Footer navigation">
-          <h4 className="footer__nav-title">Navigation</h4>
+          <h4 className="footer__nav-title">{t.footer.navigation}</h4>
           {['home', 'projects', 'services', 'process', 'about', 'contact'].map(id => (
             <button
               key={id}
               className="footer__nav-link"
               onClick={() => scrollTo(id)}
             >
-              {id.charAt(0).toUpperCase() + id.slice(1)}
+              {navMap[id] || id}
             </button>
           ))}
         </nav>
@@ -53,7 +65,7 @@ export function Footer() {
               <path d="M18 15l-6-6-6 6" />
             </svg>
           </button>
-          <span>Back to top</span>
+          <span>{t.footer.backToTop}</span>
         </div>
       </div>
     </footer>

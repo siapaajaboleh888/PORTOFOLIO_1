@@ -1,8 +1,10 @@
 import { useInView } from 'react-intersection-observer';
+import { useLanguage } from '../context/LanguageContext';
 import { PROFILE } from '../data/siteData';
 import './Contact.css';
 
 export function Contact() {
+  const { t } = useLanguage();
   const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
 
   const socials = [
@@ -27,8 +29,8 @@ export function Contact() {
         </svg>
       ),
       href: PROFILE.linkedin,
-      handle: 'Add your LinkedIn URL in siteData.ts',
-      available: false,
+      handle: 'siapaajaboleh888',
+      available: true,
     },
     {
       id: 'upwork',
@@ -39,8 +41,8 @@ export function Contact() {
         </svg>
       ),
       href: PROFILE.upwork,
-      handle: 'Profile coming soon',
-      available: false,
+      handle: 'Open for contracts',
+      available: true,
     },
     {
       id: 'fiverr',
@@ -51,8 +53,8 @@ export function Contact() {
         </svg>
       ),
       href: PROFILE.fiverr,
-      handle: 'Profile coming soon',
-      available: false,
+      handle: 'Gig packages ready',
+      available: true,
     },
   ];
 
@@ -69,12 +71,11 @@ export function Contact() {
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
               <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
             </svg>
-            Contact
+            {t.contact.label}
           </div>
-          <h2 className="section-title" id="contact-heading">Let's Work Together</h2>
+          <h2 className="section-title" id="contact-heading">{t.contact.title}</h2>
           <p className="section-subtitle">
-            Have a project idea, a question, or just want to explore what's possible?
-            I'm open to remote freelance projects of all sizes.
+            {t.contact.subtitle}
           </p>
           <div className="divider" />
         </div>
@@ -83,10 +84,8 @@ export function Contact() {
           {/* Left: message card */}
           <div className="contact__message-card card">
             <div className="contact__message-icon" aria-hidden="true">✉️</div>
-            <h3>Send me a message</h3>
-            <p>
-              The best way to reach me is via email. I typically respond within 1–2 business days.
-            </p>
+            <h3>{t.contact.formTitle}</h3>
+            <p>{t.contact.hoursDesc}</p>
 
             {PROFILE.email ? (
               <a

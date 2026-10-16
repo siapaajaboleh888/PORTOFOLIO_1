@@ -1,6 +1,9 @@
+import { useLanguage } from '../context/LanguageContext';
 import './HeroVisual.css';
 
 export function HeroVisual() {
+  const { t } = useLanguage();
+
   return (
     <div className="hero-visual" aria-hidden="true">
       {/* Glow backdrop */}
@@ -10,8 +13,8 @@ export function HeroVisual() {
       <div className="hero-visual__badge hero-visual__badge--top">
         <div className="hero-visual__badge-icon hero-visual__badge-icon--lightning">⚡</div>
         <div className="hero-visual__badge-text">
-          <span className="hero-visual__badge-title">3x Faster Delivery</span>
-          <span className="hero-visual__badge-subtitle">AI-Augmented Workflow</span>
+          <span className="hero-visual__badge-title">{t.hero.visualSpeedBadgeTitle}</span>
+          <span className="hero-visual__badge-subtitle">{t.hero.visualSpeedBadgeSub}</span>
         </div>
       </div>
 
@@ -99,10 +102,10 @@ export function HeroVisual() {
         <div className="hero-visual__footer">
           <div className="hero-visual__terminal-item">
             <span className="hero-visual__check">✓</span>
-            <span>All 28 Test Suites Passed</span>
+            <span>{t.hero.visualTestsPassed}</span>
           </div>
           <div className="hero-visual__terminal-badge">
-            <span>QA Verified</span>
+            <span>{t.hero.visualQAVerified}</span>
           </div>
         </div>
       </div>
@@ -111,8 +114,8 @@ export function HeroVisual() {
       <div className="hero-visual__badge hero-visual__badge--bottom">
         <div className="hero-visual__badge-icon hero-visual__badge-icon--shield">🛡️</div>
         <div className="hero-visual__badge-text">
-          <span className="hero-visual__badge-title">Zero Critical Bugs</span>
-          <span className="hero-visual__badge-subtitle">Strict QA & Software Testing</span>
+          <span className="hero-visual__badge-title">{t.hero.visualQABadgeTitle}</span>
+          <span className="hero-visual__badge-subtitle">{t.hero.visualQABadgeSub}</span>
         </div>
       </div>
     </div>

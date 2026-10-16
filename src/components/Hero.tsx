@@ -1,10 +1,12 @@
 import { useInView } from 'react-intersection-observer';
+import { useLanguage } from '../context/LanguageContext';
 import { HeroCanvas } from './HeroCanvas';
 import { HeroVisual } from './HeroVisual';
 import { PROFILE } from '../data/siteData';
 import './Hero.css';
 
 export function Hero() {
+  const { t } = useLanguage();
   const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
 
   const scrollTo = (id: string) => {
@@ -26,30 +28,30 @@ export function Hero() {
           {/* Status badge */}
           <div className="hero__badge" aria-label="Availability status">
             <span className="status-dot active" />
-            <span>Available for freelance projects</span>
-            <span className="hero__badge-location">· Madura, Indonesia · Remote</span>
+            <span>{t.hero.statusBadge}</span>
+            <span className="hero__badge-location">{t.hero.location}</span>
           </div>
 
           {/* Main heading */}
           <h1 className="hero__name">
-            <span className="hero__name-greeting">Hi, I'm</span>
+            <span className="hero__name-greeting">{t.hero.greeting}</span>
             <br />
             <span className="gradient-text">{PROFILE.name}</span>
           </h1>
 
           {/* Sub heading */}
           <p className="hero__headline">
-            {PROFILE.headline}
+            {t.hero.headline}
             <span className="hero__divider"> · </span>
-            {PROFILE.subheadline}
+            {t.hero.subheadline}
           </p>
 
           {/* Description */}
-          <p className="hero__tagline">{PROFILE.tagline}</p>
+          <p className="hero__tagline">{t.hero.tagline}</p>
 
           {/* Tech chips */}
           <div className="hero__chips" aria-label="Key skills">
-            {['Web Development', 'Software Testing', 'AI-Accelerated', 'Remote-Ready'].map(chip => (
+            {t.hero.chips.map(chip => (
               <span key={chip} className="hero__chip tag tag-blue">{chip}</span>
             ))}
           </div>
@@ -61,7 +63,7 @@ export function Hero() {
               className="btn btn-primary"
               onClick={() => scrollTo('projects')}
             >
-              View My Work
+              {t.hero.ctaWork}
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                 <path d="M7 17L17 7M17 7H7M17 7V17" />
               </svg>
@@ -71,7 +73,7 @@ export function Hero() {
               className="btn btn-outline"
               onClick={() => scrollTo('contact')}
             >
-              Contact Me
+              {t.hero.ctaContact}
             </button>
           </div>
 
@@ -79,17 +81,17 @@ export function Hero() {
           <div className="hero__stats">
             <div className="hero__stat">
               <span className="hero__stat-number">6+</span>
-              <span className="hero__stat-label">Projects Built</span>
+              <span className="hero__stat-label">{t.hero.statProjects}</span>
             </div>
             <div className="hero__stat-divider" aria-hidden="true" />
             <div className="hero__stat">
               <span className="hero__stat-number">AI+</span>
-              <span className="hero__stat-label">Workflow</span>
+              <span className="hero__stat-label">{t.hero.statWorkflow}</span>
             </div>
             <div className="hero__stat-divider" aria-hidden="true" />
             <div className="hero__stat">
               <span className="hero__stat-number">100%</span>
-              <span className="hero__stat-label">Remote-Ready</span>
+              <span className="hero__stat-label">{t.hero.statRemote}</span>
             </div>
           </div>
         </div>
@@ -99,7 +101,7 @@ export function Hero() {
 
         {/* Scroll indicator */}
         <div className="hero__scroll-hint" aria-label="Scroll down">
-          <span>Scroll</span>
+          <span>{t.hero.scroll}</span>
           <div className="hero__scroll-line" />
         </div>
       </div>

@@ -8,9 +8,11 @@ import { About } from './components/About';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 
+import { LanguageProvider } from './context/LanguageContext';
+
 function App() {
   return (
-    <>
+    <LanguageProvider>
       <Navbar />
       <main id="main-content">
         <Hero />
@@ -21,7 +23,7 @@ function App() {
         <Contact />
       </main>
       <Footer />
-    </>
+    </LanguageProvider>
   );
 }
 

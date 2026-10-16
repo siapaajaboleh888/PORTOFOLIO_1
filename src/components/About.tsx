@@ -1,8 +1,10 @@
 import { useInView } from 'react-intersection-observer';
+import { useLanguage } from '../context/LanguageContext';
 import { PROFILE, SKILLS } from '../data/siteData';
 import './About.css';
 
 export function About() {
+  const { t } = useLanguage();
   const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
 
   return (
@@ -14,9 +16,9 @@ export function About() {
             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z" />
             </svg>
-            About
+            {t.about.label}
           </div>
-          <h2 className="section-title" id="about-heading">Behind the Work</h2>
+          <h2 className="section-title" id="about-heading">{t.about.title}</h2>
           <div className="divider" />
         </div>
 
@@ -27,22 +29,16 @@ export function About() {
 
             <div className="about__info-cards">
               <div className="about__info-card">
-                <span className="about__info-label">📍 Location</span>
-                <span className="about__info-value">{PROFILE.location}</span>
+                <span className="about__info-label">📍 {t.about.locationLabel}</span>
+                <span className="about__info-value">{t.about.locationVal}</span>
               </div>
               <div className="about__info-card">
-                <span className="about__info-label">🎓 Education</span>
+                <span className="about__info-label">🎓 {t.about.institutionLabel}</span>
                 <span className="about__info-value">{PROFILE.institution}</span>
               </div>
               <div className="about__info-card">
-                <span className="about__info-label">🌐 Languages</span>
-                <span className="about__info-value">Indonesian (Native) · English (Working)</span>
-              </div>
-              <div className="about__info-card">
-                <span className="about__info-label">💼 Availability</span>
-                <span className="about__info-value" style={{ color: '#22c55e' }}>
-                  Open to remote freelance
-                </span>
+                <span className="about__info-label">⚙️ {t.about.approachLabel}</span>
+                <span className="about__info-value">{t.about.approachVal}</span>
               </div>
             </div>
           </div>
@@ -50,13 +46,13 @@ export function About() {
           {/* Bio + Skills */}
           <div className="about__content">
             <div className="about__bio">
-              {PROFILE.bio.split('\n\n').map((para, i) => (
-                <p key={i}>{para}</p>
-              ))}
+              <p>{t.about.p1}</p>
+              <p>{t.about.p2}</p>
+              <p>{t.about.p3}</p>
             </div>
 
             <div className="about__skills">
-              <h3 className="about__skills-title">Technical Skills</h3>
+              <h3 className="about__skills-title">{t.about.skillsTitle}</h3>
               <p className="about__skills-note">
                 Skills listed below are based on verified project usage or active learning.
                 No percentage ratings — those tend to be misleading.

@@ -1,30 +1,34 @@
 import { useState, useEffect } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 import './Navbar.css';
 
-const NAV_ITEMS = [
-  { id: 'home', label: 'Home' },
-  { id: 'projects', label: 'Projects' },
-  { id: 'services', label: 'Services' },
-  { id: 'process', label: 'My Process' },
-  { id: 'about', label: 'About' },
-  { id: 'contact', label: 'Contact' },
-];
-
 export function Navbar() {
+  const { lang, setLang, t } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState('home');
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const navItems = [
+    { id: 'home', label: t.nav.home },
+    { id: 'projects', label: t.nav.projects },
+    { id: 'services', label: t.nav.services },
+    { id: 'process', label: t.nav.process },
+    { id: 'about', label: t.nav.about },
+    { id: 'contact', label: t.nav.contact },
+  ];
+
   useEffect(() => {
+    const sectionIds = ['home', 'projects', 'services', 'process', 'about', 'contact'];
+
     const handleScroll = () => {
       setScrolled(window.scrollY > 30);
 
       // Update active section based on scroll position
-      const sections = NAV_ITEMS.map(({ id }) => document.getElementById(id));
+      const sections = sectionIds.map((id) => document.getElementById(id));
       const current = sections
-        .filter(Boolean)
+        .filter((el): el is HTMLElement => el !== null)
         .findLast((el) => {
-          const rect = el!.getBoundingClientRect();
+          const rect = el.getBoundingClientRect();
           return rect.top <= 100;
         });
       if (current?.id) setActive(current.id);
@@ -62,7 +66,7 @@ export function Navbar() {
 
         {/* Desktop Nav */}
         <div className="navbar__links" role="list">
-          {NAV_ITEMS.map(({ id, label }) => (
+          {navItems.map(({ id, label }) => (
             <button
               key={id}
               role="listitem"
@@ -75,13 +79,35 @@ export function Navbar() {
           ))}
         </div>
 
-        {/* CTA */}
-        <button
-          className="btn btn-primary navbar__cta hide-mobile"
-          onClick={() => scrollTo('contact')}
-        >
-          Hire Me
-        </button>
+        {/* Language Switcher & CTA */}
+        <div className="navbar__actions">
+          <div className="navbar__lang-switch" role="group" aria-label="Language selector">
+            <button
+              type="button"
+              className={`navbar__lang-btn ${lang === 'en' ? 'navbar__lang-btn--active' : ''}`}
+              onClick={() => setLang('en')}
+              title="English"
+            >
+              EN
+            </button>
+            <span className="navbar__lang-divider">/</span>
+            <button
+              type="button"
+              className={`navbar__lang-btn ${lang === 'id' ? 'navbar__lang-btn--active' : ''}`}
+              onClick={() => setLang('id')}
+              title="Bahasa Indonesia"
+            >
+              ID
+            </button>
+          </div>
+
+          <button
+            className="btn btn-primary navbar__cta hide-mobile"
+            onClick={() => scrollTo('contact')}
+          >
+            {t.nav.hireMe}
+          </button>
+        </div>
 
         {/* Hamburger */}
         <button
@@ -98,7 +124,7 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       <div className="navbar__mobile" aria-hidden={!menuOpen} role="dialog">
-        {NAV_ITEMS.map(({ id, label }) => (
+        {navItems.map(({ id, label }) => (
           <button
             key={id}
             className={`navbar__mobile-link ${active === id ? 'navbar__mobile-link--active' : ''}`}
@@ -108,14 +134,34 @@ export function Navbar() {
             {label}
           </button>
         ))}
-        <button
-          className="btn btn-primary"
-          onClick={() => scrollTo('contact')}
-          tabIndex={menuOpen ? 0 : -1}
-          style={{ margin: '1rem 1.5rem 0' }}
-        >
-          Hire Me
-        </button>
+
+        <div className="navbar__mobile-actions">
+          <div className="navbar__lang-switch navbar__lang-switch--mobile">
+            <button
+              type="button"
+              className={`navbar__lang-btn ${lang === 'en' ? 'navbar__lang-btn--active' : ''}`}
+              onClick={() => setLang('en')}
+            >
+              English (EN)
+            </button>
+            <button
+              type="button"
+              className={`navbar__lang-btn ${lang === 'id' ? 'navbar__lang-btn--active' : ''}`}
+              onClick={() => setLang('id')}
+            >
+              Bahasa Indonesia (ID)
+            </button>
+          </div>
+
+          <button
+            className="btn btn-primary"
+            onClick={() => scrollTo('contact')}
+            tabIndex={menuOpen ? 0 : -1}
+            style={{ width: '100%', justifyContent: 'center' }}
+          >
+            {t.nav.hireMe}
+          </button>
+        </div>
       </div>
     </nav>
   );

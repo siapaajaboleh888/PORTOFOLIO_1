@@ -1,8 +1,10 @@
 import { useInView } from 'react-intersection-observer';
+import { useLanguage } from '../context/LanguageContext';
 import { SERVICES } from '../data/siteData';
 import './Services.css';
 
 export function Services() {
+  const { t } = useLanguage();
   const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
 
   const scrollTo = (id: string) => {
@@ -20,11 +22,11 @@ export function Services() {
             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
             </svg>
-            Services
+            {t.services.label}
           </div>
-          <h2 className="section-title" id="services-heading">What I Can Build For You</h2>
+          <h2 className="section-title" id="services-heading">{t.services.title}</h2>
           <p className="section-subtitle">
-            Practical services focused on delivering real, working results — not just designs.
+            {t.services.subtitle}
           </p>
           <div className="divider" />
         </div>
@@ -38,15 +40,15 @@ export function Services() {
         {/* CTA Banner */}
         <div className="services__cta-banner">
           <div className="services__cta-content">
-            <h3>Have a project in mind?</h3>
-            <p>Let's discuss your requirements, define the scope, and figure out what I can realistically deliver.</p>
+            <h3>{t.services.ctaTitle}</h3>
+            <p>{t.services.ctaDesc}</p>
           </div>
           <button
             id="services-contact-btn"
             className="btn btn-primary"
             onClick={() => scrollTo('contact')}
           >
-            Start a Conversation
+            {t.services.ctaBtn}
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
               <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
             </svg>
@@ -58,6 +60,7 @@ export function Services() {
 }
 
 function ServiceCard({ service, index }: { service: typeof SERVICES[0]; index: number }) {
+  const { t } = useLanguage();
   const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
 
   return (
@@ -72,7 +75,7 @@ function ServiceCard({ service, index }: { service: typeof SERVICES[0]; index: n
       <p className="service-card__desc">{service.description}</p>
 
       <div className="service-card__deliverables">
-        <span className="service-card__deliverables-label">Deliverables:</span>
+        <span className="service-card__deliverables-label">{t.services.deliverablesLabel}</span>
         <ul className="service-card__deliverables-list">
           {service.deliverables.map((d, i) => (
             <li key={i}>

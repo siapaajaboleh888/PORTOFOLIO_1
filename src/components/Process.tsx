@@ -1,8 +1,10 @@
 import { useInView } from 'react-intersection-observer';
+import { useLanguage } from '../context/LanguageContext';
 import { WORKFLOW_STEPS } from '../data/siteData';
 import './Process.css';
 
 export function Process() {
+  const { t } = useLanguage();
   const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
 
   return (
@@ -13,12 +15,11 @@ export function Process() {
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
-            My Process
+            {t.process.label}
           </div>
-          <h2 className="section-title" id="process-heading">How I Work</h2>
+          <h2 className="section-title" id="process-heading">{t.process.title}</h2>
           <p className="section-subtitle">
-            A structured, repeatable workflow — so you always know what's happening, 
-            what's next, and what to expect from the collaboration.
+            {t.process.subtitle}
           </p>
           <div className="divider" />
         </div>
@@ -33,12 +34,8 @@ export function Process() {
         <div className="process__ai-note">
           <div className="process__ai-note-icon" aria-hidden="true">🤖</div>
           <div className="process__ai-note-content">
-            <strong>About AI in my workflow:</strong>
-            <p>
-              I use AI tools to accelerate development — from generating UI scaffolds to assisting
-              with test case documentation. However, all decisions, validation, code review,
-              and final delivery are my responsibility. AI is a tool, not a replacement for judgment.
-            </p>
+            <strong>{t.process.noteTitle}</strong>
+            <p>{t.process.noteDesc}</p>
           </div>
         </div>
       </div>
