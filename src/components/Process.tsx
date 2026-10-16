@@ -1,6 +1,5 @@
 import { useInView } from 'react-intersection-observer';
 import { useLanguage } from '../context/LanguageContext';
-import { WORKFLOW_STEPS } from '../data/siteData';
 import './Process.css';
 
 export function Process() {
@@ -25,8 +24,8 @@ export function Process() {
         </div>
 
         <div className="process__grid" role="list">
-          {WORKFLOW_STEPS.map((step, i) => (
-            <ProcessStep key={step.step} step={step} index={i} />
+          {t.process.steps.map((step, i) => (
+            <ProcessStep key={step.step} step={step} index={i} total={t.process.steps.length} />
           ))}
         </div>
 
@@ -43,7 +42,7 @@ export function Process() {
   );
 }
 
-function ProcessStep({ step, index }: { step: typeof WORKFLOW_STEPS[0]; index: number }) {
+function ProcessStep({ step, index, total }: { step: ReturnType<typeof useLanguage>['t']['process']['steps'][0]; index: number; total: number }) {
   const { ref, inView } = useInView({ threshold: 0.15, triggerOnce: true });
   const isEven = index % 2 === 0;
 
@@ -56,7 +55,7 @@ function ProcessStep({ step, index }: { step: typeof WORKFLOW_STEPS[0]; index: n
     >
       <div className="process-step__connector" aria-hidden="true">
         <div className="process-step__dot" />
-        {index < WORKFLOW_STEPS.length - 1 && <div className="process-step__line" />}
+        {index < total - 1 && <div className="process-step__line" />}
       </div>
       <div className="process-step__card card">
         <div className="process-step__header">

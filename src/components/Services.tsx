@@ -1,6 +1,5 @@
 import { useInView } from 'react-intersection-observer';
 import { useLanguage } from '../context/LanguageContext';
-import { SERVICES } from '../data/siteData';
 import './Services.css';
 
 export function Services() {
@@ -32,7 +31,7 @@ export function Services() {
         </div>
 
         <div className="services__grid" role="list">
-          {SERVICES.map((service, i) => (
+          {t.services.list.map((service, i) => (
             <ServiceCard key={service.id} service={service} index={i} />
           ))}
         </div>
@@ -59,7 +58,7 @@ export function Services() {
   );
 }
 
-function ServiceCard({ service, index }: { service: typeof SERVICES[0]; index: number }) {
+function ServiceCard({ service, index }: { service: ReturnType<typeof useLanguage>['t']['services']['list'][0]; index: number }) {
   const { t } = useLanguage();
   const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
 

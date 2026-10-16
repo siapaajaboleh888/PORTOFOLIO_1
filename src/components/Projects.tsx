@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useInView } from 'react-intersection-observer';
+import { useLanguage } from '../context/LanguageContext';
 import { FEATURED_PROJECTS, PROJECTS } from '../data/projects';
 import { ProjectModal } from './ProjectModal';
 import type { Project } from '../data/projects';
@@ -13,7 +14,9 @@ const STATUS_COLORS: Record<string, string> = {
 };
 
 function ProjectCard({ project, index, onClick }: { project: Project; index: number; onClick: () => void }) {
+  const { lang } = useLanguage();
   const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
+  const isId = lang === 'id';
 
   return (
     <article
@@ -40,7 +43,10 @@ function ProjectCard({ project, index, onClick }: { project: Project; index: num
               background: project.status === 'completed' ? '#22c55e' :
                 project.status === 'prototype' ? '#f59e0b' : '#06b6d4',
             }} />
-            {project.statusLabel}
+            {isId && project.status === 'completed' ? 'Selesai' :
+             isId && project.status === 'prototype' ? 'Prototipe' :
+             isId && project.status === 'academic' ? 'Akademik' :
+             project.statusLabel}
           </span>
           <span className="project-card__category">{project.category}</span>
         </div>
@@ -95,11 +101,13 @@ function ProjectCard({ project, index, onClick }: { project: Project; index: num
 }
 
 export function Projects() {
+  const { lang, t } = useLanguage();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [showAll, setShowAll] = useState(false);
   const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
 
   const displayedProjects = showAll ? PROJECTS : FEATURED_PROJECTS;
+  const isId = lang === 'id';
 
   return (
     <section id="projects" className="section projects" aria-labelledby="projects-heading">
@@ -110,12 +118,11 @@ export function Projects() {
             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <rect x="3" y="3" width="18" height="18" rx="2" />
             </svg>
-            Projects
+            {t.projects.label}
           </div>
-          <h2 className="section-title" id="projects-heading">Things I've Built</h2>
+          <h2 className="section-title" id="projects-heading">{t.projects.title}</h2>
           <p className="section-subtitle">
-            A selection of academic and personal projects — each with honest documentation
-            of what was built, the technologies used, and the current status.
+            {t.projects.subtitle}
           </p>
           <div className="divider" />
         </div>
@@ -140,7 +147,7 @@ export function Projects() {
               className="btn btn-outline"
               onClick={() => setShowAll(true)}
             >
-              View All Projects ({PROJECTS.length})
+              {isId ? `Lihat Semua Proyek (${PROJECTS.length})` : `View All Projects (${PROJECTS.length})`}
             </button>
           </div>
         )}
