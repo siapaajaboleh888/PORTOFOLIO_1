@@ -6,7 +6,7 @@ import react from '@vitejs/plugin-react'
 // For root deployment (e.g. username.github.io), use base: '/'
 export default defineConfig({
   plugins: [react()],
-  base: '/portofolio-1/',
+  base: '/PORTOFOLIO_1/',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',

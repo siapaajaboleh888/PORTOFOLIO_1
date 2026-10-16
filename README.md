@@ -3,7 +3,7 @@
 > **AI-Assisted Web Developer & Software Tester**  
 > *Crafting high-performance websites, rapid prototypes, and rock-solid software — accelerated by AI, validated by rigorous testing.*
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-blue?style=for-the-badge&logo=github)](https://siapaajaboleh888.github.io/portofolio-1/)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-blue?style=for-the-badge&logo=github)](https://siapaajaboleh888.github.io/PORTOFOLIO_1/)
 [![Vite](https://img.shields.io/badge/Vite-8.x-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![React](https://img.shields.io/badge/React-19.x-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
@@ -13,8 +13,8 @@
 
 ## 🌐 Live Preview
 
-- **URL:** [https://siapaajaboleh888.github.io/portofolio-1/](https://siapaajaboleh888.github.io/portofolio-1/)
-- **Repository:** [https://github.com/siapaajaboleh888/portofolio-1](https://github.com/siapaajaboleh888/portofolio-1)
+- **URL:** [https://siapaajaboleh888.github.io/PORTOFOLIO_1/](https://siapaajaboleh888.github.io/PORTOFOLIO_1/)
+- **Repository:** [https://github.com/siapaajaboleh888/PORTOFOLIO_1](https://github.com/siapaajaboleh888/PORTOFOLIO_1)
 
 ---
 
