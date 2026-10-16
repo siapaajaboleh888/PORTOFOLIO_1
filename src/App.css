@@ -1,0 +1,22 @@
+/* App.css — Section alternating backgrounds */
+
+/* Alternating section backgrounds for visual rhythm */
+#projects {
+  background: var(--bg-primary);
+}
+
+#services {
+  background: var(--bg-secondary);
+}
+
+#process {
+  background: var(--bg-primary);
+}
+
+#about {
+  background: var(--bg-secondary);
+}
+
+#contact {
+  background: var(--bg-primary);
+}

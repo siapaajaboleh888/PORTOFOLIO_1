@@ -1,0 +1,236 @@
+/* About.css */
+
+.about {
+  position: relative;
+  overflow: hidden;
+}
+
+.about__bg-orb {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.07) 0%, transparent 70%);
+  top: 20%;
+  left: -100px;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.about__layout {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+/* Profile column */
+.about__profile {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: sticky;
+  top: 5rem;
+}
+
+/* Terminal Avatar */
+.about__avatar-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.about__avatar {
+  width: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-base);
+}
+
+.about__avatar:hover {
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-glow-blue);
+}
+
+.about__avatar-inner {
+  padding: 0;
+}
+
+.about__avatar-terminal {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+}
+
+.about__terminal-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: rgba(255,255,255,0.04);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.about__terminal-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.about__terminal-dot.red { background: #ef4444; }
+.about__terminal-dot.yellow { background: #f59e0b; }
+.about__terminal-dot.green { background: #22c55e; }
+
+.about__terminal-title {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-left: 0.5rem;
+}
+
+.about__terminal-body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+.about__term-green { color: #4ade80; }
+.about__term-blue { color: #60a5fa; }
+.about__term-cyan { color: #67e8f9; }
+.about__term-violet { color: #c4b5fd; }
+.about__term-muted { color: #475569; font-style: italic; }
+
+.about__term-cursor {
+  color: var(--accent-blue);
+  animation: blink 1.2s ease-in-out infinite;
+}
+
+/* Info cards */
+.about__info-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.about__info-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1.1rem;
+  transition: border-color var(--transition-fast);
+}
+
+.about__info-card:hover { border-color: var(--border-accent); }
+
+.about__info-label {
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.about__info-value {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* Content column */
+.about__content {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.about__bio {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.about__bio p {
+  font-size: 1rem;
+  line-height: 1.85;
+  color: var(--text-secondary);
+}
+
+/* Skills */
+.about__skills-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.about__skills-note {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.about__skill-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.about__skill-group {
+  opacity: 0;
+  transform: translateX(-15px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.about__skill-group--visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.about__skill-group-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.about__skill-group-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+}
+
+.about__skill-group-note {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.about__skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .about__layout {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .about__profile { position: static; }
+  .about__avatar { max-width: 400px; }
+}
+
+@media (max-width: 640px) {
+  .about__info-cards { display: grid; grid-template-columns: 1fr 1fr; }
+}

@@ -1,0 +1,138 @@
+/* Services.css */
+
+.services {
+  position: relative;
+  overflow: hidden;
+}
+
+.services__bg-orb {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 70%);
+  top: 50%;
+  right: -100px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  filter: blur(60px);
+}
+
+.services__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+/* Service Card */
+.service-card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.service-card--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.service-card__icon {
+  font-size: 2.25rem;
+  line-height: 1;
+}
+
+.service-card__title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.service-card__desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  flex-grow: 1;
+}
+
+.service-card__deliverables {
+  background: rgba(59, 130, 246, 0.05);
+  border: 1px solid rgba(59, 130, 246, 0.12);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+}
+
+.service-card__deliverables-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.service-card__deliverables-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.service-card__deliverables-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.service-card__note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  border-left: 2px solid rgba(245, 158, 11, 0.3);
+  padding-left: 0.75rem;
+}
+
+.service-card__note svg {
+  flex-shrink: 0;
+  color: #f59e0b;
+  margin-top: 0.1em;
+}
+
+/* CTA Banner */
+.services__cta-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  background: var(--accent-gradient-subtle);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem 3rem;
+  flex-wrap: wrap;
+}
+
+.services__cta-content h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.4rem;
+}
+
+.services__cta-content p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  max-width: 500px;
+}
+
+@media (max-width: 640px) {
+  .services__cta-banner { flex-direction: column; padding: 2rem 1.5rem; }
+  .services__cta-banner .btn { width: 100%; justify-content: center; }
+  .services__grid { grid-template-columns: 1fr; }
+}

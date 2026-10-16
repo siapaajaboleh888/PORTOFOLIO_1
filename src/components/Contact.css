@@ -1,0 +1,206 @@
+/* Contact.css */
+
+.contact {
+  position: relative;
+  overflow: hidden;
+}
+
+.contact__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.contact__bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+}
+
+.contact__bg-orb--1 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
+  top: 0;
+  right: 0;
+}
+
+.contact__bg-orb--2 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.06) 0%, transparent 70%);
+  bottom: 0;
+  left: 0;
+}
+
+.contact__layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Message Card */
+.contact__message-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.contact__message-icon {
+  font-size: 2rem;
+}
+
+.contact__message-card h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.contact__message-card > p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.contact__email-btn {
+  align-self: flex-start;
+  font-size: 0.9rem;
+}
+
+.contact__email-placeholder {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  background: rgba(245, 158, 11, 0.06);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  line-height: 1.6;
+}
+
+.contact__email-placeholder svg {
+  color: #f59e0b;
+  flex-shrink: 0;
+  margin-top: 0.1em;
+}
+
+.contact__quick-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border-subtle);
+  margin-top: 0.5rem;
+}
+
+.contact__quick-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* Socials */
+.contact__socials-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.contact__social-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Social Card */
+.social-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  transition: all var(--transition-base);
+  text-decoration: none;
+  color: inherit;
+}
+
+.social-card:not(.social-card--disabled):hover {
+  border-color: var(--border-accent);
+  background: var(--bg-card-hover);
+  transform: translateX(4px);
+  box-shadow: var(--shadow-glow-blue);
+}
+
+.social-card--disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.social-card__icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+.social-card__icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.social-card__info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.social-card__label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.social-card__handle {
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+}
+
+.social-card__arrow {
+  color: var(--text-muted);
+  transition: transform var(--transition-fast);
+}
+
+.social-card:not(.social-card--disabled):hover .social-card__arrow {
+  transform: translate(2px, -2px);
+  color: var(--accent-blue);
+}
+
+.social-card__badge {
+  font-size: 0.65rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 100px;
+  padding: 0.2rem 0.6rem;
+}
+
+@media (max-width: 900px) {
+  .contact__layout {
+    grid-template-columns: 1fr;
+  }
+}
