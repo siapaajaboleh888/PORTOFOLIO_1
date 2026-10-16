@@ -56,7 +56,7 @@ export function Navbar() {
           aria-label="Go to home"
         >
           <span className="navbar__logo-bracket">&lt;</span>
-          <span className="navbar__logo-name">syaiful</span>
+          <span className="navbar__logo-name">Emha Anam</span>
           <span className="navbar__logo-bracket">/&gt;</span>
         </button>
 

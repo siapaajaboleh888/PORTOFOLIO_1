@@ -1,5 +1,6 @@
 import { useInView } from 'react-intersection-observer';
 import { HeroCanvas } from './HeroCanvas';
+import { HeroVisual } from './HeroVisual';
 import { PROFILE } from '../data/siteData';
 import './Hero.css';
 
@@ -92,6 +93,9 @@ export function Hero() {
             </div>
           </div>
         </div>
+
+        {/* Right side visual code terminal & floating badges */}
+        <HeroVisual />
 
         {/* Scroll indicator */}
         <div className="hero__scroll-hint" aria-label="Scroll down">

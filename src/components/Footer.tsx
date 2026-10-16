@@ -17,7 +17,7 @@ export function Footer() {
         <div className="footer__brand">
           <button className="footer__logo" onClick={scrollToTop} aria-label="Back to top">
             <span style={{ color: 'var(--accent-blue)' }}>&lt;</span>
-            <span className="gradient-text">syaiful</span>
+            <span className="gradient-text">Emha Anam</span>
             <span style={{ color: 'var(--accent-blue)' }}>/&gt;</span>
           </button>
           <p className="footer__tagline">
