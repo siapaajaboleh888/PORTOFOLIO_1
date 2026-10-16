@@ -22,8 +22,8 @@ I'm open to remote freelance projects involving website development, web app pro
   upwork: null,
   // [UPDATE] Replace with your real Fiverr profile URL when available
   fiverr: null,
-  // [UPDATE] Replace with your professional email (shown as mailto: link)
-  email: null,
+  // Professional email (shown as mailto: link & contact hub)
+  email: 'moh.s.anam07@gmail.com',
 };
 
 export const SERVICES = [

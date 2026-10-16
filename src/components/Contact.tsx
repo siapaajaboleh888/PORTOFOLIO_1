@@ -1,11 +1,24 @@
+import { useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { useLanguage } from '../context/LanguageContext';
 import { PROFILE } from '../data/siteData';
 import './Contact.css';
 
 export function Contact() {
-  const { t } = useLanguage();
+  const { lang, t } = useLanguage();
+  const [copied, setCopied] = useState(false);
   const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
+
+  const isId = lang === 'id';
+
+  const handleCopyEmail = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (PROFILE.email) {
+      navigator.clipboard.writeText(PROFILE.email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2200);
+    }
+  };
 
   const socials = [
     {
@@ -88,46 +101,66 @@ export function Contact() {
             <p>{t.contact.hoursDesc}</p>
 
             {PROFILE.email ? (
-              <a
-                href={`mailto:${PROFILE.email}`}
-                className="btn btn-primary contact__email-btn"
-                id="contact-email-btn"
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                  <polyline points="22,6 12,13 2,6" />
-                </svg>
-                {PROFILE.email}
-              </a>
-            ) : (
-              <div className="contact__email-placeholder">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                  <circle cx="12" cy="12" r="10" /><path d="M12 16v-4M12 8h.01" />
-                </svg>
-                Email not yet configured.
-                Add your email to <code>src/data/siteData.ts</code> → <code>PROFILE.email</code>
+              <div className="contact__email-wrapper">
+                <a
+                  href={`mailto:${PROFILE.email}`}
+                  className="btn btn-primary contact__email-btn"
+                  id="contact-email-btn"
+                  title={isId ? 'Kirim email langsung' : 'Send an email'}
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
+                  </svg>
+                  <span>{PROFILE.email}</span>
+                </a>
+
+                <button
+                  type="button"
+                  className="btn btn-outline contact__copy-btn"
+                  onClick={handleCopyEmail}
+                  aria-label={isId ? 'Salin alamat email' : 'Copy email address'}
+                  title={isId ? 'Salin email ke clipboard' : 'Copy email to clipboard'}
+                >
+                  {copied ? (
+                    <>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2.5" aria-hidden="true">
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                      <span style={{ color: '#22c55e' }}>{isId ? 'Tersalin!' : 'Copied!'}</span>
+                    </>
+                  ) : (
+                    <>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                        <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+                      </svg>
+                      <span>{isId ? 'Salin' : 'Copy'}</span>
+                    </>
+                  )}
+                </button>
               </div>
-            )}
+            ) : null}
 
             <div className="contact__quick-info">
               <div className="contact__quick-item">
                 <span>⏱</span>
-                <span>Response time: 1–2 business days</span>
+                <span>{isId ? 'Waktu respon: 1–2 hari kerja' : 'Response time: 1–2 business days'}</span>
               </div>
               <div className="contact__quick-item">
                 <span>🌏</span>
-                <span>Open to international clients</span>
+                <span>{isId ? 'Terbuka untuk klien lokal & global' : 'Open to international & local clients'}</span>
               </div>
               <div className="contact__quick-item">
                 <span>💬</span>
-                <span>English & Indonesian</span>
+                <span>{isId ? 'Bahasa Indonesia & English' : 'English & Indonesian'}</span>
               </div>
             </div>
           </div>
 
           {/* Right: social links */}
           <div className="contact__socials">
-            <h3 className="contact__socials-title">Find me on</h3>
+            <h3 className="contact__socials-title">{isId ? 'Temukan Saya di' : 'Find me on'}</h3>
             <div className="contact__social-cards">
               {socials.map(social => (
                 <SocialCard key={social.id} social={social} />
